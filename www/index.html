@@ -6,25 +6,15 @@
     <style>
     .radio {
         width: 100%;
+        margin-bottom: 10px;
     }
     
-    .ad {
-        width: 100%;
-    }
-    
-    img {
-        width: 100%;
-        margin: 0px auto;
-    }
-    
-    h3 {
-        background: #130C05;
-        height: 40px;
-        line-height: 40px;
-        padding: 0px;
-        margin: 0px;
-        padding-left: 15px;
+    .main-title {
+        height: 50px;
+        line-height: 50px;
         color: #FFEFD5;
+        float: left;
+        margin-left: 10px;
     }
     
     #toggle {
@@ -33,23 +23,83 @@
         background: #130C05;
     }
     
-    button img {
+    #toggle img {
         width: 80%;
         max-width: 150px;
+        margin: 0px auto;
     }
     
     #pause {
         display: none;
     }
+    
+    #mainHeader {
+        overflow: hidden;
+        background: #130C05;
+        width: 100%;
+    }
+    
+    #logo {
+        width: 50px;
+        height: 50px;
+        float: left;
+    }
+    
+    #logo img {
+        width: 100%;
+    }
+    
+    #refresh {
+        float: right;
+        width: 50px;
+        height: 100%;
+    }
+    
+    #refresh-loader {
+        display: none;
+        width: 80%;
+        margin-top: 5px;
+    }
+    
+    #refresh-icon {
+        width: 100%;
+    }
+    
+    .ad {
+        width: 100%;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+    }
+    
+    .ad img {
+        width: 100%;
+    }
     </style>
 </head>
 
 <body>
-    
-    <div id="fb-root"></div><script>(function(d, s, id) {  var js, fjs = d.getElementsByTagName(s)[0];  if (d.getElementById(id)) return;  js = d.createElement(s); js.id = id;  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3";  fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>
-    
+    <div id="fb-root"></div>
+    <script>
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    </script>
     <section id="radioHolder">
-        <h3>Sur Station - Hindi Melodious Songs</h3>
+        <div id="mainHeader">
+            <div id="logo">
+                <img src="logo.jpg" />
+            </div>
+            <div class="main-title">Sur Station - Hindi Melodious Songs</div>
+            <div id="refresh">
+                <img id="refresh-icon" src="refresh.png" />
+                <img id="refresh-loader" src="loader.gif" />
+            </div>
+        </div>
         <div class="radio">
             <button id="toggle">
                 <img id="play" src="play.png" />
@@ -59,11 +109,9 @@
         <section id="adHolder">
         </section>
     </section>
-    
     <script>
-
     var on = false,
-            radio = new Audio();
+        radio = new Audio();
 
     function loadXMLDoc() {
         var ids = ['MSXML2.XMLHTTP.3.0',
@@ -93,12 +141,11 @@
 
     function fnPopulateAds(str) {
         document.getElementById("adHolder").innerHTML = str;
+        document.getElementById("refresh-loader").style.display = "none";
+        document.getElementById("refresh-icon").style.display = "block";
     }
 
     function player() {
-        
-        //bkg.location.reload()
-
         document.getElementById("toggle").addEventListener("click", function() {
             if (!on) {
                 document.getElementById("play").style.display = "none";
@@ -114,6 +161,13 @@
             on = !on;
         });
     }
+
+    document.getElementById("refresh").addEventListener("click", function() {
+        document.getElementById("adHolder").innerHTML = "";
+        document.getElementById("refresh-loader").style.display = "block";
+        document.getElementById("refresh-icon").style.display = "none";
+        loadXMLDoc();
+    });
 
     loadXMLDoc();
     player();
