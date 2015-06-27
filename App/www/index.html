@@ -96,16 +96,6 @@
 
 <body>
     <div id="fb-root"></div>
-    <script>
-    (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-    </script>
     <section id="radioHolder">
         <div id="mainHeader">
             <div id="logo">
@@ -123,9 +113,9 @@
                 <img id="pause" src="pause.png" />
             </button>
         </div>
-        <iframe id="myFrame" src="http://sunilsyal.com"></iframe>
-        <section id="adHolder">
-        </section>
+        <iframe id="myFrame" src="http://sunilsyal.com/SurStation/iFrame.html"></iframe>
+<!--         <section id="adHolder">
+        </section> -->
 
     </section>
     <script>
@@ -182,10 +172,12 @@
     }
 
     document.getElementById("refresh").addEventListener("click", function() {
-        document.getElementById("adHolder").innerHTML = "";
-        document.getElementById("refresh-loader").style.display = "block";
-        document.getElementById("refresh-icon").style.display = "none";
-        loadXMLDoc();
+        //document.getElementById("adHolder").innerHTML = "";
+        document.getElementById("myFrame").src = "";
+        document.getElementById("myFrame").src = "http://sunilsyal.com/SurStation/iFrame.html";
+        /*document.getElementById("refresh-loader").style.display = "block";
+        document.getElementById("refresh-icon").style.display = "none";*/
+        //loadXMLDoc();
     });
 
     //loadXMLDoc();
