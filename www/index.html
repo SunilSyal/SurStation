@@ -3,119 +3,34 @@
 
 <head>
     <title>Hindi Radio - Sur Station</title>
-    <style>
-    .radio {
-        width: 100%;
-        margin-bottom: 10px;
-    }
-    
-    .main-title {
-        height: 50px;
-        line-height: 50px;
-        color: #FFEFD5;
-        float: left;
-        margin-left: 10px;
-    }
-    
-    #toggle {
-        height: 175px;
-        width: 100%;
-        background: #130C05;
-    }
-    
-    #toggle img {
-        width: 80%;
-        max-width: 150px;
-        margin: 0px auto;
-    }
-    
-    #pause {
-        display: none;
-    }
-    
-    #mainHeader {
-        overflow: hidden;
-        background: #130C05;
-        width: 100%;
-    }
-    
-    #logo {
-        width: 50px;
-        height: 50px;
-        float: left;
-    }
-    
-    #logo img {
-        width: 100%;
-    }
-    
-    #refresh {
-        float: right;
-        width: 50px;
-        height: 100%;
-    }
-    
-    #refresh-loader {
-        display: none;
-        width: 80%;
-        margin-top: 5px;
-    }
-    
-    #refresh-icon {
-        width: 100%;
-    }
-    
-    .ad {
-        width: 100%;
-        margin-bottom: 10px;
-        border: 1px solid #ccc;
-    }
-    
-    .ad img {
-        width: 100%;
-    }
-    
-    .fb_iframe_widget {
-        display: inline-block;
-        position: relative;
-        text-align: center;
-    }
-    
-    .fb-post {
-        width: 100%;
-        margin-bottom: 10px;
-    }
-    #myFrame{
-        height: 70%;
-        position: fixed;
-        bottom: 0px;
-        width: 100%;
-    }
-    </style>
+    <link rel="stylesheet" type="text/css" href="http://sunilsyal.com/SurStation/App Assets/CSS/styles.css">
 </head>
 
 <body>
-    <div id="fb-root"></div>
     <section id="radioHolder">
         <div id="mainHeader">
             <div id="logo">
                 <img src="logo.jpg" />
             </div>
-            <div class="main-title">Sur Station - Hindi Melodious Songs</div>
-            <div id="refresh">
-                <img id="refresh-icon" src="refresh.png" />
-                <img id="refresh-loader" src="loader.gif" />
-            </div>
+            <div class="main-title">Sur Station</div>
+            
         </div>
         <div class="radio">
             <button id="toggle">
                 <img id="play" src="play.png" />
                 <img id="pause" src="pause.png" />
             </button>
+
+            <div id="refresh">
+                <div id="refresh-inner">
+                    <img id="refresh-icon" src="refresh.png" />
+                    <img id="refresh-loader" src="loader.gif" />
+                </div>
+            </div>
+
         </div>
-        <iframe id="myFrame" src="http://sunilsyal.com/SurStation/iFrame.html"></iframe>
-<!--         <section id="adHolder">
-        </section> -->
+        <section id="adHolder">
+        </section>
 
     </section>
     <script>
@@ -152,6 +67,7 @@
         document.getElementById("adHolder").innerHTML = str;
         document.getElementById("refresh-loader").style.display = "none";
         document.getElementById("refresh-icon").style.display = "block";
+        fnAppendFbHeader_Footer();
     }
 
     function player() {
@@ -172,15 +88,30 @@
     }
 
     document.getElementById("refresh").addEventListener("click", function() {
-        //document.getElementById("adHolder").innerHTML = "";
+        /*//document.getElementById("adHolder").innerHTML = "";
         document.getElementById("myFrame").src = "";
         document.getElementById("myFrame").src = "http://sunilsyal.com/SurStation/iFrame.html";
         /*document.getElementById("refresh-loader").style.display = "block";
         document.getElementById("refresh-icon").style.display = "none";*/
-        //loadXMLDoc();
+        document.getElementById("adHolder").innerHTML = "";
+        loadXMLDoc();
     });
 
-    //loadXMLDoc();
+    function fnAppendFbHeader_Footer(){
+        var els = document.querySelectorAll(".fb-post a");
+
+        Array.prototype.forEach.call(els, function(el) {
+            var header = document.createElement("img");
+            header.src = "http://sunilsyal.com/SurStation/App Assets/images/FB_Header.jpg";
+            var footer = document.createElement("img");
+            footer.src = "http://sunilsyal.com/SurStation/App Assets/images/FB_Footer.jpg";
+
+            el.insertBefore(header, el.childNodes[0]);
+            el.appendChild(footer);
+        });
+    }
+
+    loadXMLDoc();
     player();
     </script>
 </body>
