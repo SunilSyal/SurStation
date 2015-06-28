@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='utf-8' ?>
 <widget id="SurStation" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
     <name>Sur Station</name>
-    <description>
+    <description>Sur Station - Hindi Melodious Songs
     </description>
     <author email="" href="">
         Sunil Syal
     </author>
-    <icon src="icon.png" />
+    <icon src="logo.png" />
     <gap:splash src="images/splash.png" />
     <gap:config-file platform="android" parent="/manifest">
         <application android:theme="@android:style/Theme.NoTitleBar">
