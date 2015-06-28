@@ -13,6 +13,8 @@
             <activity android:theme="@android:style/Theme.NoTitleBar"></activity>
         </application>
     </gap:config-file>
+    <gap:plugin name="org.apache.cordova.inappbrowser" />
+    
     <preference name="permissions" value="none" />
     <preference name="orientation" value="portrait" />
 
