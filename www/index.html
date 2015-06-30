@@ -4,125 +4,13 @@
 <head>
     <title>Hindi Radio - Sur Station</title>
     <link rel="stylesheet" type="text/css" href="http://sunilsyal.com/SurStation/App Assets/CSS/styles.css">
-    <script src="cordova.js"></script>
+    <!--<script src="cordova.js"></script>-->
 </head>
 
 <body>
-
-    <script>
-        function openURL(urlString){
-            myURL = encodeURI(urlString);
-            window.open(myURL, '_blank');
-        }
-    </script>
-
-    <section id="radioHolder">
-        <div id="mainHeader">
-            <div id="logo">
-                <img src="http://sunilsyal.com/SurStation/App Assets/images/logo.jpg" />
-            </div>
-            <div class="main-title">Sur Station</div>
-            
-        </div>
-        <div class="radio">
-            <button id="toggle">
-                <img id="play" src="play.png" />
-                <img id="pause" src="pause.png" />
-            </button>
-
-            <div id="refresh">
-                <div id="refresh-inner">
-                    <img id="refresh-icon" src="refresh.png" />
-                    <img id="refresh-loader" src="loader.gif" />
-                </div>
-            </div>
-
-        </div>
-        <section id="adHolder">
-        </section>
-
-    </section>
-    <script>
-    var on = false,
-        radio = new Audio();
-
-    function loadXMLDoc() {
-        var ids = ['MSXML2.XMLHTTP.3.0',
-            'MSXML2.XMLHTTP',
-            'Microsoft.XMLHTTP'
-        ];
-        var xmlhttp;
-        if (typeof window.XMLHttpRequest === 'function') { // code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp = new XMLHttpRequest();
-        } else { // code for IE6, IE5
-            for (var i = 0; i < ids.length; i++) {
-                try {
-                    xmlhttp = new ActiveXObject(ids[i]);
-                    break;
-                } catch (e) {}
-            }
-        }
-        xmlhttp.onreadystatechange = function() {
-                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                    fnPopulateAds(xmlhttp.responseText);
-                }
-            }
-            // Third parameter is async (true). Using "false" is not recommended.
-        xmlhttp.open("GET", "http://sunilsyal.com/SurStation/App Assets/DB/SurStation.txt", true);
-        xmlhttp.send();
-    }
-
-    function fnPopulateAds(str) {
-        document.getElementById("adHolder").innerHTML = str;
-        document.getElementById("refresh-loader").style.display = "none";
-        document.getElementById("refresh-icon").style.display = "block";
-        fnAppendFbHeader_Footer();
-    }
-
-    function player() {
-        document.getElementById("toggle").addEventListener("click", function() {
-            if (!on) {
-                document.getElementById("play").style.display = "none";
-                document.getElementById("pause").style.display = "block";
-
-                radio.src = 'http://streaming.radionomy.com/SurStation-HindiMelodiousSongs';
-                radio.play();
-            } else {
-                document.getElementById("play").style.display = "block";
-                document.getElementById("pause").style.display = "none";
-                radio.src = '';
-            }
-            on = !on;
-        });
-    }
-
-    document.getElementById("refresh").addEventListener("click", function() {
-        /*//document.getElementById("adHolder").innerHTML = "";
-        document.getElementById("myFrame").src = "";
-        document.getElementById("myFrame").src = "http://sunilsyal.com/SurStation/iFrame.html";
-        /*document.getElementById("refresh-loader").style.display = "block";
-        document.getElementById("refresh-icon").style.display = "none";*/
-        document.getElementById("adHolder").innerHTML = "";
-        loadXMLDoc();
-    });
-
-    function fnAppendFbHeader_Footer(){
-        var els = document.querySelectorAll(".fb-post a");
-
-        Array.prototype.forEach.call(els, function(el) {
-            var header = document.createElement("img");
-            header.src = "http://sunilsyal.com/SurStation/App Assets/images/FB_Header.jpg";
-            var footer = document.createElement("img");
-            footer.src = "http://sunilsyal.com/SurStation/App Assets/images/FB_Footer.jpg";
-
-            el.insertBefore(header, el.childNodes[0]);
-            el.appendChild(footer);
-        });
-    }
-
-    loadXMLDoc();
-    player();
-    </script>
+    <section id="radioHolder"></section>
+    <section id="newsHolder"></section>
+    <script src="http://sunilsyal.com/SurStation/App Assets/scripts/main.js"></script>
 </body>
 
 </html>
