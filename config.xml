@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8' ?>
-<widget id="SurStation" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+<widget id="SurStation" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
     <name>Sur Station</name>
     <description>Sur Station - Hindi Melodious Songs
     </description>
@@ -7,7 +7,7 @@
         Sunil Syal
     </author>
     <icon src="logo.png" />
-    <gap:splash src="images/splash.png" />
+    <gap:splash src="splash.png" />
     <gap:config-file platform="android" parent="/manifest">
         <application android:theme="@android:style/Theme.NoTitleBar">
             <activity android:theme="@android:style/Theme.NoTitleBar"></activity>
@@ -19,7 +19,7 @@
     <preference name="orientation" value="portrait" />
 
     <preference name="AutoHideSplashScreen" value="false" />
-    <preference name="SplashScreenDelay" value="5000" />
+    <preference name="SplashScreenDelay" value="1000" />
     <gap:plugin name="org.apache.cordova.splashscreen" />
 
     <content src="index.html" />
